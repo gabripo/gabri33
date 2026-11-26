@@ -15,10 +15,12 @@
 html{scroll-behavior:smooth;overflow-x:hidden}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.55;overflow-x:hidden}
 body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 50% -10%,rgba(242,199,92,.28),transparent 55%)}
-#bg{position:fixed;inset:0;z-index:-2;overflow:hidden;background:linear-gradient(180deg,var(--bg2),var(--bg) 60%)}
-#bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,16,51,.62),rgba(26,16,51,.86) 55%,rgba(26,16,51,.92))}
-.bgimg{position:absolute;inset:0;background-size:cover;background-repeat:no-repeat;opacity:0;transition:opacity 1.4s ease;animation:kb 26s ease-in-out infinite alternate}
-.bgimg.on{opacity:1}
+.pic{margin:0 auto;padding:1.2rem 1.1rem;max-width:560px;opacity:0;transform:translateY(40px) rotate(var(--r,0deg));transition:opacity .9s ease,transform .9s ease}
+.pic.in{opacity:1;transform:translateY(0) rotate(var(--r,0deg))}
+.pic .fr{position:relative;border-radius:18px;overflow:hidden;border:2px solid var(--gold);box-shadow:0 14px 40px rgba(0,0,0,.55),0 0 28px rgba(242,199,92,.25);aspect-ratio:3/4;background:var(--bg2)}
+.pic img{width:100%;height:100%;object-fit:cover;display:block}
+.pic figcaption{font-family:Cinzel,serif;color:var(--gold2);text-align:center;font-size:.95rem;margin-top:.7rem;letter-spacing:.04em}
+@media(prefers-reduced-motion:reduce){.pic{opacity:1;transform:none;transition:none}}
 h1,h2,h3{font-family:Cinzel,serif;margin:0;letter-spacing:.03em}
 h2{font-size:1.5rem;text-align:center;color:var(--gold);margin-bottom:.4rem}
 .sub{text-align:center;opacity:.8;margin:0 0 1.2rem;font-size:.95rem}
@@ -107,7 +109,7 @@ footer{text-align:center;padding:2rem 1rem 3rem;font-size:.8rem;opacity:.6}
 
 <div class="lang"><button data-l="it" class="on">IT</button><button data-l="en">EN</button></div>
 
-<header class="hero" data-bg="0">
+<header class="hero">
   <div class="kicker" data-i18n="kicker"></div>
   <div class="num">33</div>
   <h1 data-i18n="title"></h1>
@@ -132,7 +134,8 @@ footer{text-align:center;padding:2rem 1rem 3rem;font-size:.8rem;opacity:.6}
 
 
 
-<section id="quiz" data-bg="1">
+<figure class="pic" style="--r:-1.5deg"><div class="fr"><img src="p1.jpg" alt="" loading="lazy" style="object-position:50% 25%"></div><figcaption data-i18n="cap1"></figcaption></figure>
+<section id="quiz">
   <h2 data-i18n="quizT"></h2>
   <p class="sub" data-i18n="quizS"></p>
   <p class="note-all" data-i18n="quizAll"></p>
@@ -167,7 +170,8 @@ footer{text-align:center;padding:2rem 1rem 3rem;font-size:.8rem;opacity:.6}
   </div>
 </section>
 
-<section class="why" id="why" data-bg="2">
+<figure class="pic" style="--r:1.5deg"><div class="fr"><img src="p2.jpg" alt="" loading="lazy" style="object-position:50% 45%"></div><figcaption data-i18n="cap2"></figcaption></figure>
+<section class="why" id="why">
   <h2 data-i18n="whyT"></h2>
   <div class="card">
     <p data-i18n-html="why1"></p>
@@ -177,7 +181,8 @@ footer{text-align:center;padding:2rem 1rem 3rem;font-size:.8rem;opacity:.6}
   </div>
 </section>
 
-<section id="rsvp" data-bg="3">
+<figure class="pic" style="--r:-1.5deg"><div class="fr"><img src="p3.jpg" alt="" loading="lazy" style="object-position:50% 30%"></div><figcaption data-i18n="cap3"></figcaption></figure>
+<section id="rsvp">
   <h2 data-i18n="rsvpT"></h2>
   <p class="sub" data-i18n="rsvpS"></p>
   <form class="card" id="rsvpForm" autocomplete="off">
@@ -201,6 +206,7 @@ footer{text-align:center;padding:2rem 1rem 3rem;font-size:.8rem;opacity:.6}
   </div>
 </section>
 
+<figure class="pic" style="--r:1.5deg"><div class="fr"><img src="p4.jpg" alt="" loading="lazy" style="object-position:50% 45%"></div><figcaption data-i18n="cap4"></figcaption></figure>
 <footer data-i18n="foot"></footer>
 
 <script src="config.js"></script>
@@ -221,6 +227,7 @@ const T = {
   errName:"Inserisci il tuo nome",errNet:"Qualcosa non ha funzionato, riprova.",
   quizT:"Ma tu... Quanto conosci Gabriele?",quizS:"Indovina più risposte di tutti e vinci un regalo a sorpresa 🎁",quizAll:"Il quiz vale per tutti gli invitati: anche se non hai usato l'RSVP o non sei nel gruppo WhatsApp, basta che tu sia alla festa. Gioca: il nome te lo chiediamo alla fine!",qBonusP:"Vuoi salire in classifica? Rispondi a 2 domande bonus ⭐ (+1 per ogni risposta giusta).",qBonusGo:"Gioca i bonus ⭐",qCode:"Il tuo codice (mostralo a Gabriele se vinci):",askT:"Quiz completato! 🎉",askP:"Come ti chiami? Il nome serve a riconoscerti (insieme al tuo codice) se vinci. Il punteggio lo vedi subito dopo.",askBtn:"Vedi il mio punteggio",qGo:"Inizia il quiz",
   qDone:"Hai già giocato, ecco il tuo risultato:",qOf:"su",qMsg:"Risposte registrate. Il vincitore verrà annunciato alla festa!",qNeedName:"Inserisci il tuo nome",
+  cap1:"Camminare sulle acque (a 33 anni si può)",cap2:"L'Ultimo Aperitivo",cap3:"Trasfigurazione: sono diventato trentatreenne",cap4:"Moltiplicazione di pani, pesci e stuzzichini",
   foot:"Pagina temporanea · sarà eliminata dopo la festa"},
  en:{kicker:"You are invited to",title:"The Resurrection of Gabriele",when:"When:",where:"Where:",dress:"Dress code:",cta:"Confirm your attendance",ctaQuiz:"Play the quiz 🎁",ctaQuizSub:"you can play even without joining the event",retry:"Retry",scroll:"scroll down, my child ↓",
   whyT:"Why 33?",
@@ -236,6 +243,7 @@ const T = {
   errName:"Please enter your name",errNet:"Something went wrong, please retry.",
   quizT:"But do you... how well do you know Gabriele?",quizS:"Get more answers right than anyone else and win a surprise gift 🎁",quizAll:"The quiz is open to every guest: even if you didn't RSVP here or aren't in the WhatsApp group, as long as you're at the party. Play now: we'll ask for your name at the end!",qBonusP:"Want to climb the ranking? Answer 2 bonus questions ⭐ (+1 for each correct answer).",qBonusGo:"Play the bonus ⭐",qCode:"Your code (show it to Gabriele if you win):",askT:"Quiz complete! 🎉",askP:"What's your name? We use it to recognise you (together with your code) if you win. You'll see your score right after.",askBtn:"See my score",qGo:"Start the quiz",
   qDone:"You already played, here is your result:",qOf:"out of",qMsg:"Answers recorded. The winner will be announced at the party!",qNeedName:"Please enter your name",
+  cap1:"Walking on water (possible at 33)",cap2:"The Last Aperitivo",cap3:"Transfiguration: I turned thirty-three",cap4:"Multiplication of bread, fish and snacks",
   foot:"Temporary page · will be deleted after the party"}
 };
 let L = localStorage.getItem("lang") || ((navigator.language||"it").startsWith("it") ? "it" : "en");
@@ -256,12 +264,7 @@ function applyLang(){
 document.querySelectorAll("[data-l]").forEach(b=>b.onclick=()=>{L=b.dataset.l;applyLang()});
 
 // photo backgrounds: fixed layers that crossfade as each section scrolls into view
-const bgEl=document.createElement("div"); bgEl.id="bg"; document.body.prepend(bgEl);
-(P.photos||[]).forEach(p=>{p=typeof p==="string"?{src:p}:p;const d=document.createElement("div");d.className="bgimg";d.style.backgroundImage=`url("${p.src}")`;d.style.backgroundPosition=p.pos||"50% 20%";bgEl.appendChild(d)});
-const bgs=[...bgEl.children];
-function showBg(i){bgs.forEach((d,k)=>d.classList.toggle("on",bgs.length>0&&k===i%bgs.length))}
-if("IntersectionObserver" in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)showBg(+e.target.dataset.bg)}),{rootMargin:"-45% 0px -45% 0px"});document.querySelectorAll("[data-bg]").forEach(x=>io.observe(x))}
-showBg(0);
+
 
 // ---- backend (or demo mode with localStorage)
 function send(payload){
@@ -386,6 +389,8 @@ $("qSave").onclick=async()=>{
   $("qSave").disabled=false;
 };
 loadQuestions().then(showQuizEnd);
+(function(){const f=[...document.querySelectorAll(".pic")];if(!("IntersectionObserver" in window)){f.forEach(x=>x.classList.add("in"));return}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.15});f.forEach(x=>io.observe(x))})();
 applyLang(); showQuizEnd();
 </script>
 </body>

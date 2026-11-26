@@ -9,17 +9,6 @@ window.PARTY = {
 
   API_URL: "https://script.google.com/macros/s/AKfycbwokKVjOjwzFCrGZnZ1JAqsi7bKWrJG3B4rel9hFKJKX8St41TpdlzwOdmr7ifSpvTO/exec",
 
-  // Put photo files in /photos and list them here, e.g. ["photos/1.jpg","photos/2.jpg"]
-  // Photos are used as full-screen backgrounds, one per section (hero, quiz, why 33, RSVP).
-  // "pos" = CSS background-position, used to keep the face in view on phones.
-  photos: [
-    { src: "p3.jpg", pos: "51% 20%" },
-    { src: "p1.jpg", pos: "1% 20%" },
-    { src: "p2.jpg", pos: "50% 20%" },
-    { src: "p4.jpg", pos: "64% 20%" }
-  ],
-  halo: true,   // animated floating halo over the photos
-
   prize: {
     it: "Chi indovina più risposte di tutti vince un regalo a sorpresa!",
     en: "Whoever gets the most answers right wins a surprise gift!"
