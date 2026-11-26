@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Admin · 33</title>
+<style>
+body{margin:0;font:15px/1.5 system-ui,sans-serif;background:#16102a;color:#f6efe0;padding:1rem;max-width:900px;margin:auto}
+h1{font-size:1.3rem;color:#f2c75c}h2{font-size:1.05rem;color:#f2c75c;margin-top:1.6rem}
+input,button{font:inherit;padding:.6rem .8rem;border-radius:10px;border:1px solid #f2c75c55;background:#0003;color:inherit}
+button{background:#f2c75c;color:#2a1450;font-weight:700;cursor:pointer}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin:1rem 0}
+.stat{background:#ffffff12;border-radius:12px;padding:.7rem;text-align:center}
+.stat b{display:block;font-size:1.6rem;color:#f2c75c}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th,td{text-align:left;padding:.45rem .4rem;border-bottom:1px solid #ffffff1f;vertical-align:top}
+.yes{color:#58d58f}.maybe{color:#f2c75c}.no{color:#ff7b95}
+.tw{overflow-x:auto}
+</style>
+</head>
+<body>
+<h1>Admin · Compleanno 33</h1>
+<div id="login">
+  <input id="key" type="password" placeholder="Admin key">
+  <button id="go">Apri</button>
+  <p id="msg"></p>
+</div>
+<div id="out" hidden>
+  <button id="reload">Aggiorna</button>
+  <div class="stats" id="stats"></div>
+  <h2>Risposte (RSVP)</h2><div class="tw"><table id="tr"></table></div>
+  <h2>Classifica quiz</h2><div class="tw"><table id="tq"></table></div>
+</div>
+<script src="config.js"></script>
+<script>
+const P=window.PARTY,$=id=>document.getElementById(id);
+function cell(tr,txt,cls,tag){const c=document.createElement(tag||"td");c.textContent=txt;if(cls)c.className=cls;tr.appendChild(c)}
+function table(el,head,rows){el.innerHTML="";const h=document.createElement("tr");head.forEach(x=>cell(h,x,"","th"));el.appendChild(h);
+  rows.forEach(r=>{const tr=document.createElement("tr");r.forEach(x=>Array.isArray(x)?cell(tr,x[0],x[1]):cell(tr,x));el.appendChild(tr)})}
+function latest(a){const m=new Map();a.forEach(x=>m.set(String(x.name||"").trim().toLowerCase(),x));return [...m.values()]}
+async function load(){
+  $("msg").textContent="";
+  let data;
+  try{
+    if(!P.API_URL){data={rsvp:JSON.parse(localStorage.getItem("demo_rsvp")||"[]"),quiz:JSON.parse(localStorage.getItem("demo_quiz")||"[]")};$("msg").textContent="DEMO mode (browser data only)"}
+    else{const r=await fetch(P.API_URL+"?key="+encodeURIComponent($("key").value));data=await r.json();if(data.error){$("msg").textContent="Chiave errata";return}}
+  }catch(e){$("msg").textContent="Errore di rete";return}
+  $("login").hidden=false;$("out").hidden=false;
+  const rs=latest(data.rsvp), n=s=>rs.filter(x=>x.status===s);
+  const people=n("yes").reduce((s,x)=>s+1+(+x.guests||0),0);
+  const maybe=n("maybe").reduce((s,x)=>s+1+(+x.guests||0),0);
+  $("stats").innerHTML="";
+  [["Persone (sì)",people],["Forse",maybe],["No",n("no").length],["Quiz fatti",latest(data.quiz).length]].forEach(([l,v])=>{
+    const d=document.createElement("div");d.className="stat";const b=document.createElement("b");b.textContent=v;d.append(b,l);$("stats").appendChild(d)});
+  const lab={yes:"Sì",maybe:"Forse",no:"No"};
+  const code=x=>String(x.device||"").slice(0,4).toUpperCase()||"-";
+  table($("tr"),["Nome","Stato","+Ospiti","Note","Codice"],rs.map(x=>[x.name,[lab[x.status]||x.status,x.status],x.guests,x.notes||"",code(x)]));
+  const qs=latest(data.quiz).sort((a,b)=>b.score-a.score||a.seconds-b.seconds);
+  const byDev={};data.quiz.forEach(x=>{if(x.device){(byDev[x.device]=byDev[x.device]||new Set()).add(String(x.name).trim().toLowerCase())}});
+  table($("tq"),["#","Nome","Punti","Tempo (s)","Codice","Note"],qs.map((x,i)=>[i+1,x.name,x.score+"/"+x.total,x.seconds,code(x),(byDev[x.device]&&byDev[x.device].size>1)?["⚠ stesso dispositivo, nomi diversi","no"]:""]));
+}
+$("go").onclick=load;$("reload").onclick=load;
+if(!P.API_URL)load();
+</script>
+</body>
+</html>

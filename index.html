@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#1a1033">
+<title>33 · Il Compleanno</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#1a1033;--bg2:#2a1450;--gold:#f2c75c;--gold2:#ffe9a8;--wine:#8e1b3a;--ink:#f6efe0;--card:rgba(255,255,255,.07);--line:rgba(242,199,92,.35)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.55;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:
+ radial-gradient(circle at 50% -10%,rgba(242,199,92,.28),transparent 55%),
+ linear-gradient(180deg,var(--bg2),var(--bg) 60%)}
+h1,h2,h3{font-family:Cinzel,serif;margin:0;letter-spacing:.03em}
+h2{font-size:1.5rem;text-align:center;color:var(--gold);margin-bottom:.4rem}
+.sub{text-align:center;opacity:.8;margin:0 0 1.2rem;font-size:.95rem}
+section{padding:2.6rem 1.1rem;max-width:560px;margin:0 auto}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.1rem;backdrop-filter:blur(6px)}
+.lang{position:fixed;top:max(.6rem,env(safe-area-inset-top));right:.7rem;z-index:10;display:flex;background:rgba(0,0,0,.45);border:1px solid var(--line);border-radius:99px;overflow:hidden}
+.lang button{background:none;border:0;color:var(--ink);padding:.4rem .75rem;font:600 .8rem Inter;cursor:pointer}
+.lang button.on{background:var(--gold);color:#2a1450}
+/* hero */
+.hero{overflow:hidden;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4rem 1.2rem 2rem;position:relative}
+.hero::before{content:"";position:absolute;left:50%;top:38%;width:170vmax;height:170vmax;transform:translate(-50%,-50%);z-index:-1;
+ background:repeating-conic-gradient(from 0deg,rgba(242,199,92,.10) 0 4deg,transparent 4deg 12deg);
+ -webkit-mask-image:radial-gradient(circle,#000 0,transparent 35%);mask-image:radial-gradient(circle,#000 0,transparent 35%);animation:spin 120s linear infinite}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.kicker{letter-spacing:.3em;font-size:.72rem;text-transform:uppercase;color:var(--gold2);opacity:.9}
+.num{font-family:Cinzel,serif;font-weight:900;font-size:min(46vw,10rem);line-height:1;margin:1.6rem 0 .2rem;position:relative;
+ background:linear-gradient(180deg,#fff3c4,var(--gold) 55%,#b9852a);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 22px rgba(242,199,92,.45))}
+.num::before{content:"";position:absolute;left:50%;top:-.14em;width:.95em;height:.24em;border:.045em solid var(--gold);border-radius:50%;transform:translateX(-50%);box-shadow:0 0 18px var(--gold),inset 0 0 12px var(--gold)}
+.hero h1{font-size:clamp(1.25rem,5.5vw,1.8rem);font-weight:700}
+.meta{margin:1.1rem 0 1.6rem;display:grid;gap:.25rem;font-size:.98rem}
+.meta b{color:var(--gold)}
+.btn{display:inline-block;border:0;border-radius:99px;padding:.95rem 1.8rem;font:700 1rem Inter;cursor:pointer;text-decoration:none;
+ background:linear-gradient(180deg,var(--gold2),var(--gold));color:#2a1450;box-shadow:0 6px 24px rgba(242,199,92,.35);transition:transform .15s}
+.btn:active{transform:scale(.97)}
+.btn.ghost{background:none;color:var(--gold);border:1.5px solid var(--gold);box-shadow:none}
+.btn[disabled]{opacity:.5}
+.scroll{margin-top:2rem;opacity:.6;font-size:.8rem;animation:bob 2s infinite}
+@keyframes bob{50%{transform:translateY(6px)}}
+/* why */
+.why p{margin:.7rem 0}
+.why .quote{font-family:Cinzel,serif;color:var(--gold2);text-align:center;font-size:1.05rem;margin-top:1rem}
+/* menu */
+.menu li{list-style:none;display:grid;grid-template-columns:2.4rem 1fr;gap:.7rem;padding:.85rem 0;border-bottom:1px dashed var(--line)}
+.menu li:last-child{border:0}
+.menu ul{margin:0;padding:0}
+.menu .ic{font-size:1.7rem;line-height:1.2}
+.menu h3{font-size:.98rem;color:var(--gold)}
+.menu p{margin:.15rem 0 0;font-size:.9rem;opacity:.88}
+.note{text-align:center;font-size:.85rem;opacity:.75;margin-top:1rem}
+/* gallery */
+.gal{display:flex;gap:.6rem;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:.4rem}
+.gal figure{position:relative;margin:0;flex:0 0 78%;aspect-ratio:4/5;border-radius:16px;overflow:hidden;border:1px solid var(--line);scroll-snap-align:center;background:#0004}
+.gal img{width:100%;height:100%;object-fit:cover;animation:kb 12s ease-in-out infinite alternate}
+@keyframes kb{to{transform:scale(1.12) translate(-2%,-2%)}}
+.gal figure.halo::after{content:"";position:absolute;left:var(--hx,50%);top:var(--hy,5%);width:var(--hw,40%);aspect-ratio:4.5/1;border:5px solid var(--gold);border-radius:50%;transform:translateX(-50%);box-shadow:0 0 18px var(--gold),inset 0 0 10px var(--gold);animation:halo 3s ease-in-out infinite alternate}
+@keyframes halo{to{transform:translateX(-50%) translateY(-10px);opacity:.65}}
+.two{display:grid;gap:.7rem;margin-top:1.1rem}
+.two .btn{width:100%;font-size:1.05rem}
+.btn.no{background:none;color:var(--ink);border:1.5px solid var(--line);box-shadow:none}
+.lnk{color:var(--gold2);text-decoration:underline}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+/* form */
+label{display:block;font-weight:600;font-size:.88rem;margin:1rem 0 .35rem;color:var(--gold2)}
+input[type=text],textarea{width:100%;background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:12px;color:var(--ink);padding:.85rem;font:500 1rem Inter}
+input:focus,textarea:focus{outline:2px solid var(--gold)}
+.opts{display:grid;gap:.55rem}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0}
+.opt span{display:block;padding:.9rem 1rem;border:1.5px solid var(--line);border-radius:14px;background:rgba(0,0,0,.22);font-weight:600;transition:.15s}
+.opt input:checked+span{background:linear-gradient(180deg,var(--gold2),var(--gold));color:#2a1450;border-color:var(--gold)}
+.step{display:flex;align-items:center;justify-content:center;gap:1.2rem}
+.step button{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--gold);background:none;color:var(--gold);font-size:1.5rem;cursor:pointer}
+.step output{font:700 1.8rem Cinzel;min-width:2ch;text-align:center}
+.err{color:#ff9aa8;font-size:.88rem;min-height:1.2em;margin-top:.5rem;text-align:center}
+.done{text-align:center}
+.done .big{font-size:3rem}
+/* quiz */
+.bar{height:6px;border-radius:9px;background:rgba(255,255,255,.12);overflow:hidden;margin-bottom:1rem}
+.bar i{display:block;height:100%;width:0;background:var(--gold);transition:width .3s}
+.q{font:700 1.15rem Cinzel;margin-bottom:1rem;text-align:center}
+.ans{display:block;width:100%;text-align:left;margin:.5rem 0;padding:.95rem 1rem;border-radius:14px;border:1.5px solid var(--line);background:rgba(0,0,0,.22);color:var(--ink);font:600 1rem Inter;cursor:pointer}
+.ans.ok{background:#1f7a4a;border-color:#58d58f}
+.ans.bad{background:#8e1b3a;border-color:#ff7b95}
+.score{font:900 3rem Cinzel;color:var(--gold);text-align:center}
+.ans.sel{background:linear-gradient(180deg,var(--gold2),var(--gold));color:#2a1450;border-color:var(--gold)}
+.note-all{background:rgba(242,199,92,.12);border:1px solid var(--line);border-radius:12px;padding:.7rem .9rem;font-size:.9rem;text-align:center;margin:0 0 1rem}
+.bonusbox{margin-top:1.2rem;padding-top:1rem;border-top:1px dashed var(--line)}
+.code{font:600 .85rem Inter;color:var(--gold2);text-align:center;margin:.6rem 0 0}.code b{font:700 1.2rem Cinzel;letter-spacing:.15em}
+.prize{border:1.5px dashed var(--gold);border-radius:14px;padding:.8rem;text-align:center;margin-bottom:1rem;font-weight:600}
+footer{text-align:center;padding:2rem 1rem 3rem;font-size:.8rem;opacity:.6}
+.hide{display:none!important}
+</style>
+</head>
+<body>
+
+<div class="lang"><button data-l="it" class="on">IT</button><button data-l="en">EN</button></div>
+
+<header class="hero">
+  <div class="kicker" data-i18n="kicker"></div>
+  <div class="num">33</div>
+  <h1 data-i18n="title"></h1>
+  <div class="meta">
+    <div><b data-i18n="when"></b> <span id="mDate"></span></div>
+    <div><b data-i18n="where"></b> <a id="mPlace" class="lnk" target="_blank" rel="noopener"></a></div>
+    <div id="mFloor"></div>
+    <div><b data-i18n="dress"></b> <span id="mDress"></span></div>
+  </div>
+  <a href="#rsvp" class="btn" data-i18n="cta"></a>
+  <div style="margin-top:.8rem"><a href="#quiz" class="btn ghost" data-i18n="ctaQuiz"></a></div>
+  <div class="scroll" data-i18n="scroll"></div>
+</header>
+
+<section class="why" id="why">
+  <h2 data-i18n="whyT"></h2>
+  <div class="card">
+    <p data-i18n-html="why1"></p>
+    <p data-i18n-html="why2"></p>
+    <p data-i18n-html="why3"></p>
+    <div class="quote" data-i18n="whyQ"></div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <h2 data-i18n="menuT"></h2>
+  <p class="sub" data-i18n="menuS"></p>
+  <div class="card"><ul id="menuList"></ul></div>
+  <p class="note" data-i18n="menuN"></p>
+</section>
+
+<section class="hide" id="galSec">
+  <h2 data-i18n="galT"></h2>
+  <div class="gal" id="gal"></div>
+</section>
+
+<section id="rsvp">
+  <h2 data-i18n="rsvpT"></h2>
+  <p class="sub" data-i18n="rsvpS"></p>
+  <form class="card" id="rsvpForm" autocomplete="off">
+    <label for="name" data-i18n="lName"></label>
+    <input id="name" type="text" maxlength="60" required>
+    <div id="guestsBox">
+      <label data-i18n="lGuests"></label>
+      <div class="step"><button type="button" id="gm">−</button><output id="gv">0</output><button type="button" id="gp">+</button></div>
+    </div>
+    <label for="notes" data-i18n="lNotes"></label>
+    <textarea id="notes" rows="2" maxlength="200"></textarea>
+    <div class="err" id="rErr"></div>
+    <div class="two"><button type="button" class="btn" data-st="yes" data-i18n="bYes"></button><button type="button" class="btn no" data-st="no" data-i18n="bNo"></button></div>
+  </form>
+  <div class="card done hide" id="rDone">
+    <div class="big">🕊️</div>
+    <h3 data-i18n="doneT"></h3>
+    <p id="doneMsg"></p>
+    <a href="#quiz" class="btn" data-i18n="toQuiz"></a>
+    <p><button class="btn ghost" id="rEdit" data-i18n="edit"></button></p>
+  </div>
+</section>
+
+<section id="quiz">
+  <h2 data-i18n="quizT"></h2>
+  <p class="sub" data-i18n="quizS"></p>
+  <p class="note-all" data-i18n="quizAll"></p>
+  <div class="card">
+    <div class="prize" id="prize"></div>
+    <div id="qStart">
+      <button class="btn" style="width:100%" id="qGo" data-i18n="qGo"></button>
+    </div>
+    <div id="qAsk" class="hide done">
+      <h3 data-i18n="askT"></h3>
+      <p data-i18n="askP"></p>
+      <label for="qName" data-i18n="lName" style="text-align:left"></label>
+      <input id="qName" type="text" maxlength="60">
+      <div class="err" id="qErr"></div>
+      <button class="btn" style="width:100%" id="qSave" data-i18n="askBtn"></button>
+    </div>
+    <div id="qRun" class="hide">
+      <div class="bar"><i id="qBar"></i></div>
+      <div class="q" id="qText"></div>
+      <div id="qOpts"></div>
+    </div>
+    <div id="qEnd" class="hide done">
+      <div class="score" id="qScore"></div>
+      <p id="qMsg"></p>
+      <p class="code"><span id="qCodeL"></span><br><b id="qCode"></b></p>
+      <div class="bonusbox hide" id="qBonusBox">
+        <p data-i18n="qBonusP"></p>
+        <button class="btn" id="qBonusGo" data-i18n="qBonusGo"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer data-i18n="foot"></footer>
+
+<script src="config.js"></script>
+<script>
+const P = window.PARTY;
+const T = {
+ it:{kicker:"Sei invitato a",title:"La Resurrezione di Gabriele",when:"Quando:",where:"Dove:",dress:"Dress code:",cta:"Conferma la tua presenza",ctaQuiz:"Gioca al quiz 🎁",scroll:"scorri, figliolo ↓",
+  whyT:"Perché proprio 33?",
+  why1:"Secondo la tradizione, Gesù ha vissuto <b>33 anni</b>: a 30 inizia la vita pubblica, poi tre anni di miracoli, banchetti e ottima gestione del vino. Poi arriva la Pasqua.",
+  why2:"Il 33 torna ovunque: il <b>Purgatorio e il Paradiso</b> di Dante hanno 33 canti ciascuno (l'Inferno 34: 33 più il proemio). È un numero di compimento, in cui si chiude un capitolo e se ne apre un altro.",
+  why3:"Per me il 33 è esattamente questo: <b>fine di un ciclo e rinascita</b>. Niente croce, tranquilli: solo qualche miracolo gastronomico e, forse, il dopo-festa del terzo giorno.",
+  whyQ:"«Fate questo in memoria di me… e portate da bere.»",
+  menuT:"L'Ultima Cena",menuS:"Versione aperitivo, senza tradimenti",menuN:"Il menu è soggetto a miracoli dell'ultimo minuto.",
+  galT:"Dalle Sacre Scritture (foto)",
+  rsvpT:"Conferma la presenza",rsvpS:"Ci metti 20 secondi. Promesso.",
+  lName:"Nome e cognome",lStatus:"Ci sarai?",sYes:"Ci sarò, amen!",sMaybe:"Forse (risorgo domenica)",sNo:"Non posso, perdonato",lGuests:"Quante persone porti con te?",lNotes:"Allergie / intolleranze / note",send:"Invia la conferma",bYes:"Ci sarò! 🙌",bNo:"Non ci sarò... 😢",
+  doneT:"Ricevuto!",doneYes:"Ti aspettiamo, {n}. La pace sia con te.",doneMaybe:"Ok {n}, ti teniamo il posto per tre giorni.",doneNo:"Peccato {n}, sei perdonato. Puoi comunque fare il quiz.",toQuiz:"Vai al quiz",edit:"Modifica la risposta",
+  errName:"Inserisci il tuo nome",errNet:"Qualcosa non ha funzionato, riprova.",
+  quizT:"Ma tu... Quanto conosci Gabriele?",quizS:"Indovina più risposte di tutti e vinci un regalo a sorpresa 🎁",quizAll:"Il quiz vale per tutti gli invitati: anche se non hai usato l'RSVP o non sei nel gruppo WhatsApp, basta che tu sia alla festa. Gioca: il nome te lo chiediamo alla fine!",qBonusP:"Vuoi salire in classifica? Rispondi a 2 domande bonus ⭐ (+1 per ogni risposta giusta).",qBonusGo:"Gioca i bonus ⭐",qCode:"Il tuo codice (mostralo a Gabriele se vinci):",askT:"Quiz completato! 🎉",askP:"Come ti chiami? Il nome serve a riconoscerti (insieme al tuo codice) se vinci. Il punteggio lo vedi subito dopo.",askBtn:"Vedi il mio punteggio",qGo:"Inizia il quiz",
+  qDone:"Hai già giocato, ecco il tuo risultato:",qOf:"su",qMsg:"Risposte registrate. Il vincitore verrà annunciato alla festa!",qNeedName:"Inserisci il tuo nome",
+  foot:"Pagina temporanea · sarà eliminata dopo la festa"},
+ en:{kicker:"You are invited to",title:"The Resurrection of Gabriele",when:"When:",where:"Where:",dress:"Dress code:",cta:"Confirm your attendance",ctaQuiz:"Play the quiz 🎁",scroll:"scroll down, my child ↓",
+  whyT:"Why 33?",
+  why1:"According to tradition, Jesus lived <b>33 years</b>: public life starts at 30, then three years of miracles, banquets and excellent wine management. Then comes Easter.",
+  why2:"33 shows up everywhere: Dante's <b>Purgatorio and Paradiso</b> have 33 cantos each (Inferno has 34: 33 plus the prologue). It's a number of fulfilment, where one chapter closes and another opens.",
+  why3:"For me 33 is exactly that: <b>the end of a cycle and a rebirth</b>. No cross, don't worry: just a few culinary miracles and maybe a third-day afterparty.",
+  whyQ:"“Do this in memory of me… and bring drinks.”",
+  menuT:"The Last Supper",menuS:"Aperitivo edition, no betrayals",menuN:"Menu subject to last-minute miracles.",
+  galT:"From the Holy Scriptures (photos)",
+  rsvpT:"RSVP",rsvpS:"Takes 20 seconds. Promise.",
+  lName:"Full name",lStatus:"Will you come?",sYes:"I'll be there, amen!",sMaybe:"Maybe (I rise on Sunday)",sNo:"Can't make it, forgiven",lGuests:"How many people are you bringing?",lNotes:"Allergies / intolerances / notes",send:"Send confirmation",bYes:"I will join! 🙌",bNo:"I will not be there... 😢",
+  doneT:"Received!",doneYes:"We'll be waiting for you, {n}. Peace be with you.",doneMaybe:"Ok {n}, we'll save your seat for three days.",doneNo:"Shame {n}, you are forgiven. You can still take the quiz.",toQuiz:"Go to the quiz",edit:"Edit my answer",
+  errName:"Please enter your name",errNet:"Something went wrong, please retry.",
+  quizT:"But do you... how well do you know Gabriele?",quizS:"Get more answers right than anyone else and win a surprise gift 🎁",quizAll:"The quiz is open to every guest: even if you didn't RSVP here or aren't in the WhatsApp group, as long as you're at the party. Play now: we'll ask for your name at the end!",qBonusP:"Want to climb the ranking? Answer 2 bonus questions ⭐ (+1 for each correct answer).",qBonusGo:"Play the bonus ⭐",qCode:"Your code (show it to Gabriele if you win):",askT:"Quiz complete! 🎉",askP:"What's your name? We use it to recognise you (together with your code) if you win. You'll see your score right after.",askBtn:"See my score",qGo:"Start the quiz",
+  qDone:"You already played, here is your result:",qOf:"out of",qMsg:"Answers recorded. The winner will be announced at the party!",qNeedName:"Please enter your name",
+  foot:"Temporary page · will be deleted after the party"}
+};
+const MENU = [
+ {i:"🍷",it:["Acqua in vino","Prosecco, spritz e vino rosso. Per i non convertiti: acqua (quella normale)."],en:["Water into wine","Prosecco, spritz and red wine. For the unconverted: water (the regular kind)."]},
+ {i:"🐟",it:["Moltiplicazione dei pani e dei pesci","Mini panini, focaccia e crostini al salmone che non finiscono mai."],en:["Loaves & fishes multiplication","Mini sandwiches, focaccia and salmon crostini that never run out."]},
+ {i:"☁️",it:["Manna dal cielo","Patatine, noccioline e salatini a pioggia."],en:["Manna from heaven","Chips, peanuts and salty snacks, raining down."]},
+ {i:"🧀",it:["Dodici apostoli e un tagliere","Salumi e formaggi. Nessuno ti tradirà per trenta denari."],en:["Twelve apostles and a platter","Cold cuts and cheese. Nobody will betray you for thirty pieces of silver."]},
+ {i:"🍎",it:["Il frutto proibito","Frutta fresca. Il serpente è facoltativo."],en:["The forbidden fruit","Fresh fruit. The serpent is optional."]},
+ {i:"😇",it:["Paradiso in un bicchierino","Dolcetti monoporzione, per concludere in gloria."],en:["Heaven in a cup","Little single-serve desserts to end in glory."]}
+];
+let L = localStorage.getItem("lang") || ((navigator.language||"it").startsWith("it") ? "it" : "en");
+const $ = id => document.getElementById(id);
+const store = {get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+
+const DEV=(()=>{let d=store.get("dev");if(!d){try{d=(crypto.randomUUID?crypto.randomUUID():String(Math.random()).slice(2)+Date.now()).replace(/-/g,"").slice(0,12)}catch(e){d=String(Date.now())}store.set("dev",d)}return d})();
+const CODE=DEV.slice(0,4).toUpperCase();
+function applyLang(){
+  document.documentElement.lang = L; localStorage.setItem("lang",L);
+  document.querySelectorAll("[data-l]").forEach(b=>b.classList.toggle("on",b.dataset.l===L));
+  document.querySelectorAll("[data-i18n]").forEach(e=>e.textContent=T[L][e.dataset.i18n]||"");
+  document.querySelectorAll("[data-i18n-html]").forEach(e=>e.innerHTML=T[L][e.dataset.i18nHtml]||"");
+  $("mDate").textContent=P.date[L]; $("mPlace").textContent="📍 "+P.place[L]; $("mPlace").href=P.map; $("mFloor").textContent=P.floor[L]; $("mDress").textContent=P.dress[L];
+  $("prize").textContent="🎁 "+P.prize[L];
+  $("menuList").innerHTML=MENU.map(m=>`<li><div class="ic">${m.i}</div><div><h3>${m[L][0]}</h3><p>${m[L][1]}</p></div></li>`).join("");
+  showDone(); if(qState.running) renderQ(); else showQuizEnd();
+}
+document.querySelectorAll("[data-l]").forEach(b=>b.onclick=()=>{L=b.dataset.l;applyLang()});
+
+// gallery
+if(P.photos&&P.photos.length){$("galSec").classList.remove("hide");$("gal").innerHTML=P.photos.map(p=>{p=typeof p==="string"?{src:p}:p;const h=p.halo||{};return `<figure class="${P.halo&&p.halo!==false?"halo":""}" style="--hx:${h.x||"50%"};--hy:${h.y||"5%"};--hw:${h.w||"40%"}"><img src="${p.src}" alt="" loading="lazy"></figure>`}).join("")}
+
+// ---- backend (or demo mode with localStorage)
+function send(payload){
+  payload.time=new Date().toISOString(); payload.device=DEV;
+  if(!P.API_URL){const k="demo_"+payload.type;const a=store.get(k)||[];a.push(payload);store.set(k,a);return Promise.resolve()}
+  return fetch(P.API_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)});
+}
+
+// ---- RSVP
+let guests=0;
+const upd=()=>{$("gv").textContent=guests};
+$("gm").onclick=()=>{guests=Math.max(0,guests-1);upd()};
+$("gp").onclick=()=>{guests=Math.min(6,guests+1);upd()};
+$("rsvpForm").onsubmit=e=>e.preventDefault();
+document.querySelectorAll("[data-st]").forEach(b=>b.onclick=async()=>{
+  $("rErr").textContent="";
+  const name=$("name").value.trim(); if(!name){$("rErr").textContent=T[L].errName;$("name").focus();return}
+  const st=b.dataset.st;
+  const data={type:"rsvp",name,status:st,guests:st==="no"?0:guests,notes:$("notes").value.trim()};
+  document.querySelectorAll("[data-st]").forEach(x=>x.disabled=true);
+  try{await send(data);store.set("rsvp",data);showDone();$("qName").value=name}
+  catch(err){$("rErr").textContent=T[L].errNet}
+  document.querySelectorAll("[data-st]").forEach(x=>x.disabled=false);
+});
+function showDone(){
+  const d=store.get("rsvp"); if(!d)return;
+  $("rsvpForm").classList.add("hide"); $("rDone").classList.remove("hide");
+  const k={yes:"doneYes",maybe:"doneMaybe",no:"doneNo"}[d.status];
+  $("doneMsg").textContent=T[L][k].replace("{n}",d.name.split(" ")[0]);
+  if(!$("qName").value)$("qName").value=d.name;
+}
+$("rEdit").onclick=()=>{const d=store.get("rsvp")||{};$("rDone").classList.add("hide");$("rsvpForm").classList.remove("hide");$("name").value=d.name||"";$("notes").value=d.notes||"";
+  guests=d.guests||0;upd()};
+
+// ---- Quiz
+const qState={running:false,i:0,score:0,t0:0,locked:false,mainSecs:0};
+let qList=[];
+const MAIN=()=>P.questions.filter(q=>!q.bonus), BON=()=>P.questions.filter(q=>q.bonus);
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+function startList(list){qList=list.map(q=>({q,perm:shuffle(q.o.it.map((_,i)=>i))}));qState.i=0;qState.locked=false;qState.running=true;renderQ()}
+function renderQ(){
+  const it=qList[qState.i], Q=it.q;
+  $("qBar").style.width=(qState.i/qList.length*100)+"%";
+  $("qText").textContent=(Q.bonus?"⭐ Bonus ":"")+(qState.i+1)+"/"+qList.length+" · "+Q.q[L];
+  $("qOpts").innerHTML="";
+  it.perm.forEach(orig=>{const b=document.createElement("button");b.className="ans";b.textContent=Q.o[L][orig];b.onclick=()=>pick(orig,b);$("qOpts").appendChild(b)});
+}
+function pick(orig,btn){
+  if(qState.locked)return; qState.locked=true;
+  const Q=qList[qState.i].q; if(orig===Q.a)qState.score++;
+  btn.classList.add("sel");   // neutral feedback: correct answers are not revealed
+  setTimeout(()=>{qState.i++;qState.locked=false;qState.i<qList.length?renderQ():endList()},700);
+}
+async function record(withBonus){
+  const total=MAIN().length+(withBonus?BON().length:0);
+  const data={type:"quiz",name:$("qName").value.trim(),score:qState.score,total,seconds:qState.mainSecs,bonus:withBonus};
+  try{await send(data)}catch(e){}
+  store.set("quiz",data);
+}
+async function endList(){
+  qState.running=false;
+  const isBonus=!!qList[0].q.bonus;
+  if(isBonus){await record(true);showQuizEnd();return}
+  qState.mainSecs=Math.round((Date.now()-qState.t0)/1000);
+  // result is kept on the device until the guest enters a name (survives a page reload)
+  store.set("quiz",{pending:true,name:"",score:qState.score,total:MAIN().length,seconds:qState.mainSecs,bonus:false});
+  showQuizEnd();
+}
+function showQuizEnd(){
+  const d=store.get("quiz"); if(!d)return;
+  $("qStart").classList.add("hide");$("qRun").classList.add("hide");
+  if(d.pending){$("qEnd").classList.add("hide");$("qAsk").classList.remove("hide");return}
+  $("qAsk").classList.add("hide");$("qEnd").classList.remove("hide");
+  $("qScore").textContent=d.score+" "+T[L].qOf+" "+d.total; $("qMsg").textContent=T[L].qMsg; $("qCodeL").textContent=T[L].qCode; $("qCode").textContent=CODE;
+  $("qBonusBox").classList.toggle("hide",!!d.bonus||!BON().length);
+}
+$("qGo").onclick=()=>{
+  if(!MAIN().length)return;
+  $("qStart").classList.add("hide"); $("qRun").classList.remove("hide");
+  Object.assign(qState,{score:0,t0:Date.now(),mainSecs:0}); startList(MAIN());
+};
+$("qBonusGo").onclick=()=>{
+  const d=store.get("quiz"); if(!d)return;
+  $("qName").value=d.name; qState.score=d.score; qState.mainSecs=d.seconds;
+  $("qEnd").classList.add("hide"); $("qRun").classList.remove("hide"); startList(BON());
+};
+$("qSave").onclick=async()=>{
+  const n=$("qName").value.trim(); if(!n){$("qErr").textContent=T[L].qNeedName;return}
+  const d=store.get("quiz"); if(!d)return;
+  $("qErr").textContent=""; $("qSave").disabled=true;
+  qState.score=d.score; qState.mainSecs=d.seconds;
+  await record(false); $("qSave").disabled=false; showQuizEnd();
+};
+applyLang(); showQuizEnd();
+</script>
+</body>
+</html>
